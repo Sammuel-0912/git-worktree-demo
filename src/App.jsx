@@ -8,7 +8,7 @@ import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
-import CookieConsent from './components/CookieConsent';
+import LegalNotice from './components/LegalNotice';
 
 function getInitialTheme() {
     const saved = localStorage.getItem('theme');
@@ -42,7 +42,7 @@ function App() {
                 <CallToAction />
             </main>
             <Footer />
-            <CookieConsent />
+            <LegalNotice />
         </div>
     );
 }
