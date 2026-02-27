@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NAV_LINKS, BRAND } from '../data/navigation';
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -11,18 +11,6 @@ function Navbar() {
                     <span className="navbar__logo" aria-hidden="true">◆</span>
                     <span className="navbar__brand-name">{BRAND.name}</span>
                 </a>
-
-                <button
-                    className="navbar__toggle"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    aria-expanded={menuOpen}
-                    aria-controls="nav-menu"
-                    aria-label="切換導覽選單"
-                >
-                    <span className="navbar__toggle-bar" />
-                    <span className="navbar__toggle-bar" />
-                    <span className="navbar__toggle-bar" />
-                </button>
 
                 <nav
                     id="nav-menu"
@@ -43,9 +31,36 @@ function Navbar() {
                         預約 Demo
                     </a>
                 </nav>
+
+                <div className="navbar__actions">
+                    <button
+                        className="navbar__theme-toggle"
+                        onClick={toggleTheme}
+                        aria-label={theme === 'dark' ? '切換至淺色模式' : '切換至深色模式'}
+                        title={theme === 'dark' ? '切換至淺色模式' : '切換至深色模式'}
+                    >
+                        <span className="theme-icon">
+                            {theme === 'dark' ? '🌞' : '🌙'}
+                        </span>
+                    </button>
+
+                    <button
+                        className="navbar__toggle"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-expanded={menuOpen}
+                        aria-controls="nav-menu"
+                        aria-label="切換導覽選單"
+                    >
+                        <span className="navbar__toggle-bar" />
+                        <span className="navbar__toggle-bar" />
+                        <span className="navbar__toggle-bar" />
+                    </button>
+                </div>
             </div>
         </header>
     );
 }
 
 export default Navbar;
+
+
